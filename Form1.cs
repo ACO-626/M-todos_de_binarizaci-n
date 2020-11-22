@@ -49,12 +49,12 @@ namespace Métodos_de_binarización
         private void binarizaciónToolStripMenuItem_Click(object sender, EventArgs e)
         {
             GrayImage = img.Convert<Gray, byte>();
-            pictureBox1.Image = GrayImage.Bitmap();
+            pictureBox1.Image = GrayImage.ToBitmap();
 
             //Binarización thresholding
             binarImg = new Image<Gray, byte>(GrayImage.Width,GrayImage.Height,new Gray(0));
-            CvInvoke.Threshold(GrayImage,binarImg,50,255,Emgu.CV.CvEnum.ThresholdType.Binary);
-
+            CvInvoke.Threshold(GrayImage,binarImg,100,255,Emgu.CV.CvEnum.ThresholdType.Binary);
+            pictureBox2.Image = binarImg.ToBitmap();
         }
     }
 }
